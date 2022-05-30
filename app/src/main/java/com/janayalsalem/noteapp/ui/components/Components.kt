@@ -20,11 +20,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
+import com.janayalsalem.noteapp.dataLayer.model.Note
+import com.janayalsalem.noteapp.ui.utils.formatDate
 
 
 @Composable
 fun ItemOfData(modifier: Modifier = Modifier,
-               data: String,
+               data: Note,
                onNoteClicked: (String) -> Unit) {
     Surface(
         modifier
@@ -45,10 +47,10 @@ fun ItemOfData(modifier: Modifier = Modifier,
                 .padding(horizontal = 14.dp, vertical = 6.dp)
                 .animateContentSize(),
             horizontalAlignment = Alignment.Start) {
-            Text(text = data,
+            Text(text = data.title,
                 style = MaterialTheme.typography.subtitle2)
-            Text(text = data, style = MaterialTheme.typography.subtitle1)
-            Text(text = data,
+            Text(text = data.description, style = MaterialTheme.typography.subtitle1)
+            Text(text = formatDate(data.entryDate.time),
                 style = MaterialTheme.typography.caption)
 
             Row(
@@ -73,7 +75,7 @@ fun ItemOfData(modifier: Modifier = Modifier,
 }
 
 @Composable
-fun DataColumn(data : List<String>) {
+fun DataColumn(data : List<Note>) {
     LazyColumn {
         items(data) { item ->
             ItemOfData(data = item, onNoteClicked = {})

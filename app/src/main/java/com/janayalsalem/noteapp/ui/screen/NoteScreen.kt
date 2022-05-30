@@ -19,6 +19,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.janayalsalem.noteapp.ui.components.DataColumn
 import com.janayalsalem.noteapp.R
+import com.janayalsalem.noteapp.dataLayer.model.Note
 import com.janayalsalem.noteapp.ui.components.NoteButton
 import com.janayalsalem.noteapp.ui.components.NoteInputText
 
@@ -91,7 +92,7 @@ fun NoteScreen(
         Divider(modifier = Modifier.padding(10.dp))
 
         // show list
-        DataColumn()
+        DataColumn(notes)
 
     }
 

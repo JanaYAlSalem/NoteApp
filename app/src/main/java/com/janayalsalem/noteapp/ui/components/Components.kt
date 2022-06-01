@@ -27,7 +27,8 @@ import com.janayalsalem.noteapp.ui.utils.formatDate
 @Composable
 fun ItemOfData(modifier: Modifier = Modifier,
                data: Note,
-               onNoteClicked: (String) -> Unit) {
+               onNoteClicked: (Note) -> Unit,
+               onDeleteClicked: (Note) -> Unit) {
     Surface(
         modifier
             .padding(4.dp)
@@ -57,7 +58,8 @@ fun ItemOfData(modifier: Modifier = Modifier,
                 Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.End ) {
-                IconButton(onClick = { /*TODO*/ }) {
+                // delete from data base
+                IconButton(onClick = { onDeleteClicked(data) }) {
                     Icon(
                         Icons.Filled.Delete,
                         contentDescription = "Delete",
@@ -75,10 +77,12 @@ fun ItemOfData(modifier: Modifier = Modifier,
 }
 
 @Composable
-fun DataColumn(data : List<Note>) {
+fun DataColumn(data : List<Note>,
+               onNoteClicked: (Note) -> Unit,
+               onDeleteClicked: (Note) -> Unit) {
     LazyColumn {
         items(data) { item ->
-            ItemOfData(data = item, onNoteClicked = {})
+            ItemOfData(data = item, onNoteClicked = onNoteClicked, onDeleteClicked = onDeleteClicked)
         }
     }
 }

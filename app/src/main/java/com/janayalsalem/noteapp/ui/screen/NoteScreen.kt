@@ -31,12 +31,8 @@ fun NoteScreen(
     onAddNote: (Note) -> Unit,
     onRemoveNote: (Note) -> Unit
 ) {
-    var title by remember {
-        mutableStateOf("")
-    }
-    var description by remember {
-        mutableStateOf("")
-    }
+    var title by remember { mutableStateOf("") }
+    var description by remember { mutableStateOf("") }
     val context = LocalContext.current
 
     Column(modifier = Modifier.padding(6.dp)) {
@@ -92,7 +88,7 @@ fun NoteScreen(
         Divider(modifier = Modifier.padding(10.dp))
 
         // show list
-        DataColumn(notes)
+        DataColumn(data = notes, onNoteClicked = {},onDeleteClicked = onRemoveNote)
 
     }
 

@@ -4,6 +4,7 @@
     package="com.janayalsalem.noteapp">
 
     <application
+        android:name=".util.NoteApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
